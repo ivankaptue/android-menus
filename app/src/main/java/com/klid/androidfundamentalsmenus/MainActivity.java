@@ -13,8 +13,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
+import androidx.appcompat.widget.PopupMenu;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     private ActionMode mActionMode;
 
@@ -122,6 +123,30 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onContextItemSelected(item);
+        }
+    }
+
+    public void showPopupMenu(View view) {
+        PopupMenu popup = new PopupMenu(this, view);
+        popup.setOnMenuItemClickListener(this);
+        popup.inflate(R.menu.popup_menu);
+        popup.show();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.popupMenu1:
+                Toast.makeText(this, "Popup Menu 1 clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.popupMenu2:
+                Toast.makeText(this, "Popup Menu 2 clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.popupMenu3:
+                Toast.makeText(this, "Popup Menu 3 clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return false;
         }
     }
 }
