@@ -1,5 +1,6 @@
 package com.klid.androidfundamentalsmenus;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -66,6 +67,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         registerForContextMenu(tv);
 
         Button button = findViewById(R.id.btnActionModeMenu);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ListViewActivity.class);
+                startActivity(intent);
+            }
+        });
         button.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
