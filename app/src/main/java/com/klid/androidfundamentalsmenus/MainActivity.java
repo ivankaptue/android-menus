@@ -91,6 +91,22 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.options_menu, menu);
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, "Check out the menu course app");
+
+        menu.addIntentOptions(
+            R.id.intent_group,
+            0,
+            0,
+            getComponentName(),
+            null,
+            intent,
+            0,
+            null
+        );
+
         return true;
     }
 
